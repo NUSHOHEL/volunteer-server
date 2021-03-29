@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.4w305.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const port = process.env.port || 8080
+const port = process.env.PORT || 8080
 
 
 // connet to the mongoDB
@@ -49,6 +49,4 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || port)
